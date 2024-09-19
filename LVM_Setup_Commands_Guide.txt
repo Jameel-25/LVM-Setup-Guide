@@ -1,0 +1,67 @@
+Commands and Their Explanations
+
+1.   fdisk -l  
+   - Lists all available disk drives and their partitions.
+
+2.   lsblk  
+   - Displays information about block devices, including partitions and their mount points.
+
+3.   fdisk /dev/sdb  
+   - Opens the  fdisk  utility for the specified disk (in this case, /dev/sdb ) to manage partitions.
+
+4.   m  
+   - Displays help within the  fdisk  utility, showing available commands.
+
+5.   n  
+   - Creates a new partition within  fdisk.
+
+6.   p  
+   - Selects the primary partition type when creating a new partition.
+
+7.   t  
+   - Changes the type of a partition within  fdisk.
+
+8.   8e  
+   - The hex code for the LVM partition type.
+
+9.   w  
+   - Writes the changes made to the partition table and exits  fdisk.
+
+10.   pvcreate /dev/sdb1  
+    - Initializes the specified partition as a physical volume for LVM.
+
+11.   pvdisplay  
+    - Displays detailed information about physical volumes.
+
+12.   vgcreate vg1 /dev/sdb1  
+    - Creates a volume group named  vg1  using the specified physical volume.
+
+13.   vgdisplay  
+    - Displays detailed information about volume groups.
+
+14.   lvcreate -L 200M -n datalv vg1  
+    - Creates a logical volume named  datalv  with a size of 200 MB in the volume group  vg1.
+
+15.   lvdisplay  
+    - Shows detailed information about logical volumes.
+
+16.   mkfs.ext4 /dev/vg1/datalv  
+    - Formats the specified logical volume with the ext4 filesystem.
+
+17.   mkdir /linux  
+    - Creates a directory named  /linux, which will serve as a mount point.
+
+18.   mount /dev/vg1/datalv /linux/  
+    - Mounts the specified logical volume to the  /linux  directory.
+
+19.   df -Th  
+    - Displays filesystem disk space usage in a human-readable format.
+
+20.   cat /etc/mtab  
+    - Displays the current mount points and their details.
+
+21.   nano /etc/fstab  
+    - Opens the fstab file in the nano text editor for editing.
+
+22.   mount -av  
+    - Mounts all filesystems specified in  /etc/fstab, ensuring they are active.
